@@ -2,7 +2,7 @@
 
 ** Se trata de un catalogo web para la consulta de Peliculas, Series y Actores. En el mismo existira la posibilidad de registrarse para poder guardar el contenido en favoritos y poder consultarlo posteriormente junto con los datos de perfil de usuario.
 
-👨‍### User Stories
+### 👨‍🏫 User Stories
 
 📕 **Prioridad Alta** (_Must Have_)
 
