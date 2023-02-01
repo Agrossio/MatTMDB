@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MatTMDB</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div id="logo-container">
+                <h1>MatTMDB</h1>
+
+                <!-- <div id="search-container"> -->
+                <form
+                    action="https://api.themoviedb.org/3/search/movie?api_key=e65c4db5bae2b9b0565c97b1e317145e&query=search">
+                    <!-- <label  class="search" for="search">Search</label> -->
+                    <input type="text" name="query" id="search-input" class="search" placeholder="Search a Movie, TV Show or Person">
+                    <input type="text" name="api_key" value="e65c4db5bae2b9b0565c97b1e317145e" class="hidden">
+                    <!-- <button>Search</button> -->
+
+                     <!-- usar FETCH para hacer el pedido asincronico al back -->
+                     
+                </form>
+                <!-- </div> -->
+            </div>
+
+            <!-- https://api.themoviedb.org/3/search/${type}?api_key=${apiKey}&query=${searchString} -->
+
+            <ul id="nav-bar">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="components/register.html">Register</a></li>
+                <li><a href="components/login.html">Login</a></li>
+            </ul>
+
+        </nav>
+    </header>
+    <main>
+        <h2>Trending</h2>
+
+        <!-- https://api.themoviedb.org/3/discover/movie?api_key=e65c4db5bae2b9b0565c97b1e317145e&sort_by=popularity.desc -->
+
+        <section>
+            <article id="trending1" class="trendingCard">
+                <img src="https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
+                    alt="Puss in Boots Poster">
+                <h3 class="title">Puss in Boots</h3>
+                <p class="release-date">2022-12-07</p>
+
+            </article>
+            <article id="trending2" class="trendingCard">
+                <img src="https://image.tmdb.org/t/p/original/tabMRXUTTBmprGax6ON2r9yBN0D.jpg" alt="Nine Queens Poster">
+                <h3 class="title">Nine Queens</h3>
+                <p class="release-date">2000-08-31</p>
+            </article>
+            <article id="trending3" class="trendingCard">
+                <img src="https://image.tmdb.org/t/p/original/d9nBoowhjiiYc4FBNtQkPY7c11H.jpg" alt="M3GAN Poster">
+                <h3 class="title">M3GAN</h3>
+                <p class="release-date">2000-08-31</p>
+            </article>
+            <article id="trending4" class="trendingCard">
+                <img src="https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
+                    alt="Avatar: The Way of Water Poster">
+                <h3 class="title">Avatar: The Way of Water</h3>
+                <p class="release-date">2022-12-14</p>
+            </article>
+            <article id="trending5" class="trendingCard">
+                <img src="https://image.tmdb.org/t/p/original/26yQPXymbWeCLKwcmyL8dRjAzth.jpg" alt="Devotion Poster">
+                <h3 class="title">Devotion</h3>
+                <p class="release-date">2022-11-23</p>
+            </article>
+        </section>
+        <h2>Latest Trailers</h2>
+        <section>
+            <article id="trailer1" class="trailerCard">
+
+            </article>
+            <article id="trailer2" class="trailerCard">
+
+            </article>
+            <article id="trailer3" class="trailerCard">
+
+            </article>
+            <article id="trailer4" class="trailerCard">
+
+            </article>
+            <article id="trailer5" class="trailerCard">
+
+            </article>
+        </section>
+
+
+    </main>
+
+</body>
+
+</html>

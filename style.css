@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+
+:root {
+    --colorPrimario: whitesmoke;
+    --colorSecundario: #707070;
+  }
+
+* {
+    font-family: 'Rowdies', cursive;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    /* display: flex; */
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+main {
+    position: relative;
+    top: 80px;
+    width: 80%;
+    border: 1px solid;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(3, 37, 65);
+    color: whitesmoke;
+    align-items: center;
+    height: 64px;
+    width: 100%;
+    /* position: fixed; */
+    /* width: 100%; */
+}
+
+#logo-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 20px;
+    /* margin: 20px 10px 10px 10px; */
+}
+
+form {
+    /* border: 1px solid; */
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 10px;
+    }
+
+.search {
+    margin-left: 10px;
+}
+
+#search-input {
+    color: var(--colorSecundario);
+    background-color: rgb(196, 194, 194);
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+
+}
+
+#search-input::placeholder {
+    color: var(--colorSecundario);
+    font-weight: lighter;
+}
+
+
+.hidden {
+    display: none;
+}
+
+#nav-bar {
+    font-size: 1em;
+    display: flex;
+    justify-content: end;
+    /* align-items: flex-end; */
+    width: 50%;
+    margin-right: 200px;
+    /* border: 1px solid; */
+}
+
+#nav-bar li {
+    margin-left: 10px;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+#nav-bar li:hover {
+    background-color: var(--colorSecundario);
+}
+
+.active{
+    background-color: var(--colorSecundario);
+}
+
+#nav-bar li a:link {
+    color: var(--colorPrimario);
+}
+
+#nav-bar li a:visited {
+    color: var(--colorPrimario);
+}
+
+/* #nav-bar li a:hover {
+    color: var(--colorSecundario);
+    background-color: var(--colorSecundario);
+} */
+
+#nav-bar li a:active {
+    color: rgb(105, 103, 103);
+}
