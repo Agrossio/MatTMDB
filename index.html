@@ -6,6 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/favicon-32x32.png" type="image/x-icon">
     <title>MatTMDB</title>
 </head>
 
@@ -22,7 +23,7 @@
                     <!-- <label  class="search" for="search">Search</label> -->
                     <input type="text" name="query" id="search-input" class="search" placeholder="Search a Movie, TV Show or Person">
                     <input type="text" name="api_key" value="e65c4db5bae2b9b0565c97b1e317145e" class="hidden">
-                    <!-- <button>Search</button> -->
+                    <button class="hidden">Search</button>
 
                      <!-- usar FETCH para hacer el pedido asincronico al back -->
                      
@@ -46,30 +47,30 @@
         <!-- https://api.themoviedb.org/3/discover/movie?api_key=e65c4db5bae2b9b0565c97b1e317145e&sort_by=popularity.desc -->
 
         <section>
-            <article id="trending1" class="trendingCard">
+            <article id="trending1" class="trending card">
                 <img src="https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
                     alt="Puss in Boots Poster">
                 <h3 class="title">Puss in Boots</h3>
                 <p class="release-date">2022-12-07</p>
 
             </article>
-            <article id="trending2" class="trendingCard">
-                <img src="https://image.tmdb.org/t/p/original/tabMRXUTTBmprGax6ON2r9yBN0D.jpg" alt="Nine Queens Poster">
-                <h3 class="title">Nine Queens</h3>
-                <p class="release-date">2000-08-31</p>
+            <article id="trending2" class="trending card">
+                <img src="https://image.tmdb.org/t/p/original/72V1r1G8S87ELagVxjqAUdChMCt.jpg" alt="The Enforcer">
+                <h3 class="title">The Enforcer</h3>
+                <p class="release-date">2022-09-22</p>
             </article>
-            <article id="trending3" class="trendingCard">
+            <article id="trending3" class="trending card">
                 <img src="https://image.tmdb.org/t/p/original/d9nBoowhjiiYc4FBNtQkPY7c11H.jpg" alt="M3GAN Poster">
                 <h3 class="title">M3GAN</h3>
                 <p class="release-date">2000-08-31</p>
             </article>
-            <article id="trending4" class="trendingCard">
+            <article id="trending4" class="trending card">
                 <img src="https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
                     alt="Avatar: The Way of Water Poster">
                 <h3 class="title">Avatar: The Way of Water</h3>
                 <p class="release-date">2022-12-14</p>
             </article>
-            <article id="trending5" class="trendingCard">
+            <article id="trending5" class="trending card">
                 <img src="https://image.tmdb.org/t/p/original/26yQPXymbWeCLKwcmyL8dRjAzth.jpg" alt="Devotion Poster">
                 <h3 class="title">Devotion</h3>
                 <p class="release-date">2022-11-23</p>
@@ -77,25 +78,27 @@
         </section>
         <h2>Latest Trailers</h2>
         <section>
-            <article id="trailer1" class="trailerCard">
+            <article id="trailer1" class="trailer card">
 
             </article>
-            <article id="trailer2" class="trailerCard">
+            <article id="trailer2" class="trailer card">
 
             </article>
-            <article id="trailer3" class="trailerCard">
+            <article id="trailer3" class="trailer card">
 
             </article>
-            <article id="trailer4" class="trailerCard">
+            <article id="trailer4" class="trailer card">
 
             </article>
-            <article id="trailer5" class="trailerCard">
+            <article id="trailer5" class="trailer card">
 
             </article>
         </section>
 
 
     </main>
+
+<script src="index.js"></script>
 
 </body>
 

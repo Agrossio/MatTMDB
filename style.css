@@ -135,3 +135,11 @@ form {
 #nav-bar li a:active {
     color: rgb(105, 103, 103);
 }
+
+section{
+    display: flex;
+}
+
+.card img{
+    width: 50%;
+}
