@@ -138,6 +138,8 @@ form {
 
 section{
     display: flex;
+    /* flex-wrap: wrap;
+    justify-content: center; */
 }
 
 .card img{
