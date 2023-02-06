@@ -21,12 +21,13 @@
                 <form
                     action="https://api.themoviedb.org/3/search/movie?api_key=e65c4db5bae2b9b0565c97b1e317145e&query=search">
                     <!-- <label  class="search" for="search">Search</label> -->
-                    <input type="text" name="query" id="search-input" class="search" placeholder="Search a Movie, TV Show or Person">
+                    <input type="text" name="query" id="search-input" class="search"
+                        placeholder="Search a Movie, TV Show or Person..">
                     <input type="text" name="api_key" value="e65c4db5bae2b9b0565c97b1e317145e" class="hidden">
                     <button class="hidden">Search</button>
 
-                     <!-- usar FETCH para hacer el pedido asincronico al back -->
-                     
+                    <!-- usar FETCH para hacer el pedido asincronico al back -->
+
                 </form>
                 <!-- </div> -->
             </div>
@@ -42,40 +43,24 @@
         </nav>
     </header>
     <main>
-        
+
         <!-- https://api.themoviedb.org/3/discover/movie?api_key=e65c4db5bae2b9b0565c97b1e317145e&sort_by=popularity.desc -->
-        
+
         <h2>Trending</h2>
         <section id="trending">
-            <!-- <article id="trending1" class="trending card">
-                <img src="https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg"
-                    alt="Puss in Boots Poster">
-                <h3 class="title">Puss in Boots</h3>
-                <p class="release-date">2022-12-07</p>
 
-            </article>
-            <article id="trending2" class="trending card">
-                <img src="https://image.tmdb.org/t/p/original/72V1r1G8S87ELagVxjqAUdChMCt.jpg" alt="The Enforcer">
-                <h3 class="title">The Enforcer</h3>
-                <p class="release-date">2022-09-22</p>
-            </article>
-            <article id="trending3" class="trending card">
-                <img src="https://image.tmdb.org/t/p/original/d9nBoowhjiiYc4FBNtQkPY7c11H.jpg" alt="M3GAN Poster">
-                <h3 class="title">M3GAN</h3>
-                <p class="release-date">2000-08-31</p>
-            </article>
-            <article id="trending4" class="trending card">
-                <img src="https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
-                    alt="Avatar: The Way of Water Poster">
-                <h3 class="title">Avatar: The Way of Water</h3>
-                <p class="release-date">2022-12-14</p>
-            </article>
-            <article id="trending5" class="trending card">
-                <img src="https://image.tmdb.org/t/p/original/26yQPXymbWeCLKwcmyL8dRjAzth.jpg" alt="Devotion Poster">
-                <h3 class="title">Devotion</h3>
-                <p class="release-date">2022-11-23</p>
-            </article> -->
         </section>
+        
+        <!-- Trending Modal -->
+        <div id="trendingModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Info of the first card..</p>
+            </div>
+
+        </div>
 
         <h2>Latest Trailers</h2>
         <section id="trailers">
@@ -99,7 +84,8 @@
 
     </main>
 
-<script src="index.js"></script>
+    <!-- usar type="module" para modularizar los archicos js -->
+    <script type="module" src="index.js"></script>
 
 </body>
 
