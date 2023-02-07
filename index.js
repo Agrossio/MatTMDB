@@ -1,14 +1,14 @@
-import { modalArticle } from "./utils/modals.js";
+import { modalArticle } from "./commons/modals.js";
 
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-    let response = await fetch('https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e')
+    let trendingResponse = await fetch('https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e')
 
-    let data = await response.json()
+    let trendingData = await trendingResponse.json()
     // console.log(data)
 
-    let trendingArray = data.results
+    let trendingArray = trendingData.results
 
     console.log(trendingArray)
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let image = document.createElement('img');
         image.src = `https://image.tmdb.org/t/p/w342${trendingArray[i].poster_path}`
         image.alt = `${trendingArray[i][title]} Poster`
-        //  "poster_sizes": ["w92", "w154", "w185", "w342", "w500", "w780", "original"]
+        // TMDB "poster_sizes": ["w92", "w154", "w185", "w342", "w500", "w780", "original"]
 
 
         let h3 = document.createElement('h3');
@@ -45,16 +45,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         let article = document.createElement('article');
         article.classList.add("trending")
         article.classList.add("card")
+        article.id = `article-${i}`
 
         article.appendChild(image);
         article.appendChild(h3);
         article.appendChild(pDate);
         article.appendChild(pType);
-
+        
         trendingSection.appendChild(article);
+        
+        modalArticle(article, trendingArray[i]);
     };
 
-    modalArticle();
+    
 
     // trendingArray.forEach((media, index) => {
 
