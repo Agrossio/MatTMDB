@@ -3,7 +3,7 @@
 :root {
     --colorPrimario: whitesmoke;
     --colorSecundario: #707070;
-  }
+}
 
 * {
     font-family: 'Rowdies', cursive;
@@ -63,17 +63,18 @@ h1 {
     /* margin: 20px 10px 10px 10px; */
 }
 
-form {
-    /* border: 1px solid; */
+/* #search-form {
+    
     width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
     margin-left: 10px;
-    }
+} */
 
 .search {
     margin-left: 10px;
+    z-index: 2;
 }
 
 #search-input {
@@ -115,48 +116,154 @@ form {
     background-color: var(--colorSecundario);
 }
 
-.active{
+.active {
     background-color: var(--colorSecundario);
 }
 
 #nav-bar li a:link {
     color: var(--colorPrimario);
+    
 }
 
 #nav-bar li a:visited {
     color: var(--colorPrimario);
 }
 
-/* #nav-bar li a:hover {
-    color: var(--colorSecundario);
-    background-color: var(--colorSecundario);
-} */
+#nav-bar li a:hover {
+    cursor: pointer;
+}
 
 #nav-bar li a:active {
     color: rgb(105, 103, 103);
 }
 
-section{
+
+/* ------------------------------- MAIN ----------------------------------- */
+
+section {
     display: flex;
-    /* flex-wrap: wrap;
-    justify-content: center; */
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
 }
 
 .card {
     cursor: pointer;
+    /* border: 1px solid; */
     border-radius: 10px;
-    margin: 0.5rem;
-    padding: 2rem;
+    background-color: rgba(3, 37, 65, 0.2);
+    margin: 1.5rem;
+    padding: 1rem;
     font-size: 12px;
+    color: rgb(56, 55, 55);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0px 5px 5px rgb(3, 37, 65);
 }
 
 .card:hover {
-    background-color: rgba(3, 37, 65, 0.2);
+    background-color: rgba(3, 37, 65, 0.8);
+    color: whitesmoke;
 }
 
-.card img{
-    width: 100%;
+.card img {
+    width: 80%;
+    /* height: 80%; */
+    margin-bottom: 10px;
     border-radius: 10px;
+}
+
+.card .rating {
+    height: 35px;
+    width: 35px;
+    border: 1px solid rgb(105, 103, 103);
+    background-color: rgb(3, 37, 65);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-small;
+    color: whitesmoke;
+    position: relative;
+    top: 15px;
+    left: 15px;
+
+}
+
+/* ------------------------------------------------- STAR BUTTONS ------------------------------- */
+
+.star-btn {
+    position: relative;
+    bottom: -50%;
+    left: 300%;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.9em;
+    margin-right: 0.9em;
+    margin-bottom: 1.2em;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0.7em solid var(--colorSecundario);
+    border-left: 0.3em solid transparent;
+    /* Controlls the size of the stars. */
+    font-size: 14px;
+}
+
+.star-btn:before,
+.star-btn:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0.6em;
+    left: -1em;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid var(--colorSecundario);
+    border-left: 1em solid transparent;
+    transform: rotate(-35deg);
+}
+
+.star-btn:after {
+    transform: rotate(35deg);
+}
+
+/* ---------------- FILLED STARS -------------------------------------------------- */
+
+.star-btn-filled {
+    position: relative;
+    bottom: -50%;
+    left: 300%;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.9em;
+    margin-right: 0.9em;
+    margin-bottom: 1.2em;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0.7em solid #fc0;
+    border-left: 0.3em solid transparent;
+    /* Controlls the size of the stars. */
+    font-size: 14px;
+}
+
+.star-btn-filled:before,
+.star-btn-filled:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0.6em;
+    left: -1em;
+    border-right: 1em solid transparent;
+    border-bottom: 0.7em solid #fc0;
+    border-left: 1em solid transparent;
+    transform: rotate(-35deg);
+}
+
+.star-btn-filled:after {
+    transform: rotate(35deg);
 }
 
 
@@ -164,38 +271,137 @@ section{
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;                             /* Hidden by default */
+    position: fixed;                           /* Stay in place */
+    z-index: 1;                                /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
+    width: 100%;                               /* Full width */
+    height: 100%;                              /* Full height */
+    overflow: auto;                            /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);          /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 3% auto;                    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
+    width: 95%;                         /* Could be more or less, depending on screen size */
+    height: 87%;
+    overflow: auto;
+}
+
+/* The Close Button */
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
+
+.modal-inner-content {
+    position: relative;
+    max-width: 800px;
+    /* Maximum width */
+    margin: 0 auto;
+    /* Center it */
+}
+
+/* -------------- cuando el modal es grid --------------------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+}
+
+
+#big-card-image {
+    position: absolute;
+    width: 68%;
+    margin: 0 auto;
+}
+
+.big-card-text-container {
+    position: absolute;
+    /* Position the background text */
+    bottom: 10%;
+    /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(0, 0, 0);
+    /* Fallback color */
+    background: rgba(0, 0, 0, 0.5);
+    /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    /* Grey text */
+    width: 92.5%;
+    /* Full width */
+    padding: 20px;
+    /* Some padding */
+}
+
+#video-button {
+    position: absolute;
+    right: 10%;
+    cursor: pointer;
+    font-size: 28px;
+    /* font-weight: bold; */
+}
+
+#favorite-button {
+    position: absolute;
+    bottom: 78%;
+    right: 10%;
+    cursor: pointer;
+    font-size: 28px;
+    /* font-weight: bold; */
+}
+
+#youtube-video {
+    z-index: 5;
+}
+
+/* ------------------------------------------------ VIDEO (creo que ya no lo uso ver de borrarlo) ----------------------------------------- */
+
+/* Style the video: 100% width and height to cover the entire window */
+#big-card-video {
+    position: fixed;
+    align-self: center;
+    bottom: 13.8%;
+    /* min-width: 100%; */
+    min-height: 75%;
+}
+
+/* Add some content at the bottom of the video/page */
+.big-card-content {
+    position: fixed;
+    bottom: 13.8%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 90%;
+    padding: 20px;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}

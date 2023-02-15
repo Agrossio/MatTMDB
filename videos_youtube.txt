@@ -1,0 +1,22 @@
+let video = document.createElement('iframe');
+    video.setAttribute('id','big-card-video');
+    video.setAttribute('type','text/html');
+    video.setAttribute('width','720');
+    video.setAttribute('height','405');
+    video.setAttribute('frameborder','0');
+    video.setAttribute('allowfullscreen','');
+
+    // para que funcione el auto play hay que setear mute=1 y para que funcione el loop hay que agregar playlist=id_del_video:
+    video.setAttribute('src','https://www.youtube.com/embed/V75dMMIW2B4?mute=1&autoplay=1&controls=0&loop=1&playlist=V75dMMIW2B4');
+
+/*     video.setAttribute('autoplay','');
+    video.setAttribute('muted','');
+    video.setAttribute('loop','');
+
+    let source = document.createElement('source');
+    source.setAttribute('src', 'https://www.youtube.com/watch?v=xjDjIWPwcPU');
+    source.setAttribute('type', 'video/mp4');
+
+    video.appendChild(source) */
+
+    modalInnerContent.appendChild(video)
