@@ -33,8 +33,10 @@ main {
     position: relative;
     top: 80px;
     width: 80%;
-    border: 1px solid;
+    /* border: 1px solid; */
     margin: 0 auto;
+    background-color: whitesmoke;
+    border-radius: 5px;
 }
 
 nav {
@@ -61,6 +63,18 @@ h1 {
     margin-left: 10px;
     margin-top: 20px;
     /* margin: 20px 10px 10px 10px; */
+}
+
+h2{
+    /* margin-bottom: 10px;
+    margin-left: 10px; */
+    padding: 10px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+h3{
+    padding: 10px;
 }
 
 /* #search-form {
@@ -190,83 +204,6 @@ section {
 
 }
 
-/* ------------------------------------------------- STAR BUTTONS ------------------------------- */
-
-.star-btn {
-    position: relative;
-    bottom: -50%;
-    left: 300%;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: 0.9em;
-    margin-right: 0.9em;
-    margin-bottom: 1.2em;
-    border-right: 0.3em solid transparent;
-    border-bottom: 0.7em solid var(--colorSecundario);
-    border-left: 0.3em solid transparent;
-    /* Controlls the size of the stars. */
-    font-size: 14px;
-}
-
-.star-btn:before,
-.star-btn:after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 0.6em;
-    left: -1em;
-    border-right: 1em solid transparent;
-    border-bottom: 0.7em solid var(--colorSecundario);
-    border-left: 1em solid transparent;
-    transform: rotate(-35deg);
-}
-
-.star-btn:after {
-    transform: rotate(35deg);
-}
-
-/* ---------------- FILLED STARS -------------------------------------------------- */
-
-.star-btn-filled {
-    position: relative;
-    bottom: -50%;
-    left: 300%;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: 0.9em;
-    margin-right: 0.9em;
-    margin-bottom: 1.2em;
-    border-right: 0.3em solid transparent;
-    border-bottom: 0.7em solid #fc0;
-    border-left: 0.3em solid transparent;
-    /* Controlls the size of the stars. */
-    font-size: 14px;
-}
-
-.star-btn-filled:before,
-.star-btn-filled:after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 0.6em;
-    left: -1em;
-    border-right: 1em solid transparent;
-    border-bottom: 0.7em solid #fc0;
-    border-left: 1em solid transparent;
-    transform: rotate(-35deg);
-}
-
-.star-btn-filled:after {
-    transform: rotate(35deg);
-}
-
-
 /* ------------------------------------------------ TRENDING MODAL ------------------------------ */
 
 /* The Modal (background) */
@@ -334,7 +271,7 @@ section {
 .big-card-text-container {
     position: absolute;
     /* Position the background text */
-    bottom: 10%;
+    bottom: 9.3%;
     /* At the bottom. Use top:0 to append it to the top */
     background: rgb(0, 0, 0);
     /* Fallback color */

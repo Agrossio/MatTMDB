@@ -1,7 +1,6 @@
-// import { fetchJson } from "../utils/fetch";
+import { fetchJson } from "../utils/fetch.js";
 
 // https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Modules
-
 
 function modalArticle(article, mediaElement) {
   // Get the modal
@@ -25,19 +24,17 @@ function modalArticle(article, mediaElement) {
   article.onclick = async function () {
     modal.style.display = "block";
 
-    console.log(mediaElement);
+    // console.log(mediaElement);
 
     let { id, media_type } = mediaElement;
 
     modalInnerContent.innerHTML = '';
 
     // busco el detalle de la pelicula que recibo por props:
-    let mediaResponse = await fetch(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=e65c4db5bae2b9b0565c97b1e317145e`)
-    let mediaData = await mediaResponse.json();
-    // console.log(mediaData);
 
-    // NO SE PORQUE EN ESTE MODULO NO ME TOMA LA FUNCION QUE CREE:
-    // let mediaData = await fetchJson(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=e65c4db5bae2b9b0565c97b1e317145e`, null)
+    let mediaData = await fetchJson(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=e65c4db5bae2b9b0565c97b1e317145e`, null)
+
+    console.log("media data", mediaData);
 
     let title = mediaElement.media_type == "movie" ? "title" : "name";
 
@@ -69,6 +66,7 @@ function modalArticle(article, mediaElement) {
       let videoData = await videoResponse.json();
       let videoId = videoData.results[0].key;
 
+      // APLICAR EL fetchJson PARA LOS VIDEOS
 
       let youtubeVideo = document.createElement('iframe');
       youtubeVideo.setAttribute('id', 'youtube-video');

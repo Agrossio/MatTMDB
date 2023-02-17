@@ -1,12 +1,17 @@
+import { generateSection } from "./commons/articles.js";
 import { gridModal, modalArticle } from "./commons/modals.js";
 import { fetchJson } from "./utils/fetch.js";
+import { validateInputs } from "./utils/validations.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
 
     try {
 
         let trendingArray = await fetchJson('https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e', null)
-        let topRatedArray = await fetchJson('https://api.themoviedb.org/3/movie/top_rated?api_key=e65c4db5bae2b9b0565c97b1e317145e&language=en-US&page=1', null)
+        let topRatedArray = await fetchJson('https://api.themoviedb.org/3/discover/tv?api_key=e65c4db5bae2b9b0565c97b1e317145e&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1', null)
+
+        // https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e
+        // https://api.themoviedb.org/3/movie/top_rated?api_key=e65c4db5bae2b9b0565c97b1e317145e&language=en-US&page=1
 
         // console.log(trendingArray)
 
@@ -37,55 +42,59 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         });
 
+        generateSection(trendingArray, trendingSection) // esto seria para usar si puedo lograr hacer andar los modulos: meter el for dentro del generateSection pasando mediaArray y una section
+        generateSection(topRatedArray, topRatedSection)
+        
+        let registerForm = document.querySelector('.register-form-modal-content');
+        let userInput = document.querySelector('#register-user');
+        let emailInput = document.querySelector('#register-email');
+        let pass1Input = document.querySelector('#register-pass1');
+        let pass2Input = document.querySelector('#register-pass2');
 
-        for (let i = 0; i < 5; i++) {
 
-            let title = trendingArray[i].media_type == "movie" ? "title" : "name";
-            let releaseDate = trendingArray[i].media_type == "movie" ? "release_date" : "first_air_date";
-            let mediaType = trendingArray[i].media_type == "movie" ? "Movie" : "Tv Show";
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-            // console.log(mediaType);
+            const userValue = userInput.value;
+            const emailValue = emailInput.value;
+            const pass1Value = pass1Input.value;
+            const pass2Value = pass2Input.value;
 
-            let image = document.createElement('img');
-            image.src = `https://image.tmdb.org/t/p/w342${trendingArray[i].poster_path}`
-            image.alt = `${trendingArray[i][title]} Poster`
-            // TMDB "poster_sizes": ["w92", "w154", "w185", "w342", "w500", "w780", "original"]
-
-            let rating = document.createElement('div');
-            rating.classList.add('rating');
-            rating.innerText = trendingArray[i].vote_average.toFixed(1);
+            validateInputs(userInput, pass1Input, pass2Input, emailInput);
             
-            let imageContainer = document.createElement('div')
-            imageContainer.classList.add("image-container")
-            imageContainer.appendChild(rating);
-            imageContainer.appendChild(image);
+            fetch("http://localhost:3000/users", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user: userValue,
+                    password: pass1Value,
+                    email: emailValue
+                })
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log('Registro OK');
+                    console.log(data);
+                   // location.href = "../IniciarSesión/login.html"
 
-            let h3 = document.createElement('h3');
-            h3.classList.add("title");
-            h3.innerText = trendingArray[i][title];
+                   document.getElementById('register').style.display='none';
+                   document.getElementById('login').style.display='block';
 
-            let pDate = document.createElement('p');
-            pDate.classList.add("release-date");
-            pDate.innerText = trendingArray[i][releaseDate];
+                })
+                .catch(function (error) {
+                    document.getElementById('register').style.display='none';
+                    document.getElementById('login').style.display='block';
+                    console.error(error);
+                });
+            
+            
+        })
+        
 
-            let pType = document.createElement('p');
-            pType.classList.add("media-type");
-            pType.innerText = mediaType;
-
-            let article = document.createElement('article');
-            article.classList.add("trending")
-            article.classList.add("card")
-            article.id = `article-${i}`
-
-            article.appendChild(imageContainer);
-            article.appendChild(h3);
-            article.appendChild(pDate);
-            article.appendChild(pType);
-
-            trendingSection.appendChild(article);
-
-            modalArticle(article, trendingArray[i]);
-        };
 
         // let rightButton = document.createElement('button');
         // rightButton.setAttribute('id', 'trending-right')

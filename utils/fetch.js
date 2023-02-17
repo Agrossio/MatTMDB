@@ -1,15 +1,22 @@
-async function fetchJson(url, body) {
+async function fetchJson(url, body = null) {
 
     try {
         let response = await fetch(url);
 
         let jsonData = await response.json()
-        // console.log(trendingData)
+        // console.log("JSON DATA", jsonData)
 
-        let fetchResult = jsonData.results
+        if (Array.isArray(jsonData.results)){
 
-        // console.log(fetchResult)
-        return fetchResult
+            let fetchResult = await jsonData.results
+            // console.log("FETCH RESULT", fetchResult)
+            
+            return fetchResult;
+        
+        } else {
+            return jsonData;
+        }
+
 
     } catch (error) {
         console.error(error)
