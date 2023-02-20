@@ -9,7 +9,7 @@ async function fetchJson(url, method = 'GET', body) {
             response = await fetch(url);
         } else {
 
-           response = await fetch("http://localhost:8080/mattmdb-1.0-SNAPSHOT/api/v1/users", {
+           response = await fetch(url, {
                 method: method,
                 headers: {
                     'Content-Type': 'application/json'
