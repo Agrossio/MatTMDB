@@ -119,11 +119,12 @@ h3{
 
 #nav-bar li:hover {
     background-color: var(--colorSecundario);
+    cursor: pointer;
 }
 
-.active {
+/* .active {
     background-color: var(--colorSecundario);
-}
+} */
 
 #nav-bar li a:link {
     color: var(--colorPrimario);
@@ -132,10 +133,6 @@ h3{
 
 #nav-bar li a:visited {
     color: var(--colorPrimario);
-}
-
-#nav-bar li a:hover {
-    cursor: pointer;
 }
 
 #nav-bar li a:active {

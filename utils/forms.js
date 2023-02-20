@@ -40,11 +40,20 @@ function userFormListener(registerForm, userInput, emailInput, pass1Input, pass2
                     let response = await fetchJson("http://localhost:8080/mattmdb-1.0-SNAPSHOT/api/v1/users/login", 'POST', body)
                     console.log(response);
 
-                    // hide register form:
-                    document.getElementById('login').style.display = 'none';
-
-                    // show profile form (me falta crear el perfil):
-                    //document.getElementById('profile').style.display = 'block';
+                    if(response.statusCode == 401){
+                        alert(response.message)
+                    } else {
+                        
+                        // hide register form:
+                        document.getElementById('login').style.display = 'none';
+    
+                        localStorage.setItem('userid', response.response.userId);
+                        localStorage.setItem('username', response.response.username);
+                        localStorage.setItem('email', response.response.email);
+                        
+                        // show profile form (me falta crear el perfil):
+                        //document.getElementById('profile').style.display = 'block';
+                    }
 
                 } catch (error) {
 

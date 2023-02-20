@@ -5,6 +5,31 @@ import { userFormListener } from "./utils/forms.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
 
+    let userSession = {
+        userId: localStorage.getItem('userid'),
+        username: localStorage.getItem('username'),
+        email: localStorage.getItem('email'),
+    };
+
+    let registerBtn = document.querySelector("#register-btn");
+    let loginBtn = document.querySelector("#login-btn");
+    let profileBtn = document.querySelector("#profile-btn");
+    let logoutBtn = document.querySelector("#logout-btn");
+
+    console.log("USER SESSION", userSession);
+
+    if(userSession.userId){
+        registerBtn.classList.add('hidden');
+        loginBtn.classList.add('hidden');
+        profileBtn.classList.remove('hidden')
+        logoutBtn.classList.remove('hidden')
+
+        let link = profileBtn.children[0];
+        link.innerText = `Hola ${userSession.username}!!`;
+
+        console.dir(link);
+    }
+
     try {
 
         let trendingArray = await fetchJson('https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e')
@@ -51,12 +76,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         let pass1Input = document.querySelector('#register-pass1');
         let pass2Input = document.querySelector('#register-pass2');
 
+        // agrego listener al register form:
         userFormListener(registerForm, userInput, emailInput, pass1Input, pass2Input);
 
         let loginForm = document.querySelector('.login-form-modal-content');
         let emailLoginInput = document.querySelector('#login-email');
         let passLoginInput = document.querySelector('#login-pass');
 
+        // agrego listener al login form:
         userFormListener(loginForm, null, emailLoginInput, passLoginInput, null);
 
     } catch (error) {
