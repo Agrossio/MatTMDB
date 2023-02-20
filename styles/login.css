@@ -3,7 +3,7 @@
 }
 
 /* Full-width input fields */
-.login-form-modal input[type=text],
+.login-form-modal input[type=email],
 .login-form-modal input[type=password] {
     width: 100%;
     padding: 12px 20px;

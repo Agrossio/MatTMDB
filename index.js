@@ -1,14 +1,14 @@
 import { generateSection } from "./commons/articles.js";
-import { gridModal, modalArticle } from "./commons/modals.js";
+import { gridModal} from "./commons/modals.js";
 import { fetchJson } from "./utils/fetch.js";
-import { validateInputs } from "./utils/validations.js";
+import { userFormListener } from "./utils/forms.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
 
     try {
 
-        let trendingArray = await fetchJson('https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e', null)
-        let topRatedArray = await fetchJson('https://api.themoviedb.org/3/discover/tv?api_key=e65c4db5bae2b9b0565c97b1e317145e&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1', null)
+        let trendingArray = await fetchJson('https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e')
+        let topRatedArray = await fetchJson('https://api.themoviedb.org/3/discover/tv?api_key=e65c4db5bae2b9b0565c97b1e317145e&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1')
 
         // https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e
         // https://api.themoviedb.org/3/movie/top_rated?api_key=e65c4db5bae2b9b0565c97b1e317145e&language=en-US&page=1
@@ -51,84 +51,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         let pass1Input = document.querySelector('#register-pass1');
         let pass2Input = document.querySelector('#register-pass2');
 
+        userFormListener(registerForm, userInput, emailInput, pass1Input, pass2Input);
 
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        let loginForm = document.querySelector('.login-form-modal-content');
+        let emailLoginInput = document.querySelector('#login-email');
+        let passLoginInput = document.querySelector('#login-pass');
 
-            const userValue = userInput.value;
-            const emailValue = emailInput.value;
-            const pass1Value = pass1Input.value;
-            const pass2Value = pass2Input.value;
-
-            validateInputs(userInput, pass1Input, pass2Input, emailInput);
-            
-            fetch("http://localhost:3000/users", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user: userValue,
-                    password: pass1Value,
-                    email: emailValue
-                })
-            })
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    console.log('Registro OK');
-                    console.log(data);
-                   // location.href = "../IniciarSesión/login.html"
-
-                   document.getElementById('register').style.display='none';
-                   document.getElementById('login').style.display='block';
-
-                })
-                .catch(function (error) {
-                    document.getElementById('register').style.display='none';
-                    document.getElementById('login').style.display='block';
-                    console.error(error);
-                });
-            
-            
-        })
-        
-
-
-        // let rightButton = document.createElement('button');
-        // rightButton.setAttribute('id', 'trending-right')
-
-        // let leftButton = document.createElement('button');
-        // leftButton.setAttribute('id', 'trending-right')
-
-        // trendingSection.appendChild(rightButton);
-
-        // rightButton.addEventListener('click', () => {
-
-        //     trendingSection.scrollLeft += trendingSection.offsetWidth;
-        // })
-
-        // trendingArray.forEach((media, index) => {
-
-        //     if(index == 5) return;
-
-        //     trendingSection.innerHTML += 
-        //         `<article id="trending${index + 1}" class="trending card">
-        //             <img src="https://image.tmdb.org/t/p/original${media.poster_path}"
-        //                 alt="${media.title} Poster">
-        //             <h3 class="title">${media.title}</h3>
-        //             <p class="release-date">${media.release_date}</p>
-        //          </article>`
-
-
-        //     // console.log(trendingArticle);
-        //     // trendingSection.appendChild(trendingArticle)
-        //   });
-
-        // console.log(trendingArticle);
-
-
+        userFormListener(loginForm, null, emailLoginInput, passLoginInput, null);
 
     } catch (error) {
         alert(error)

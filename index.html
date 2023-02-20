@@ -126,11 +126,23 @@
                 </div>
 
                 <div class="login-form-container">
-                    <label for="username"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required>
+                    <div class="validation-container">
+                        <label for="email"><b>Email</b></label>
+                        <input type="email" id="login-email" placeholder="Enter your email" name="email" required>
+                        <p></p>
+                    </div>
 
+                    <!-- <div class="validation-container">
+                        <label for="email"><b>Email</b></label>
+                        <input id="register-email"  type="email" placeholder="Enter Email" name="email">
+                        <p></p>
+                    </div> -->
+
+                <div class="validation-container">
                     <label for="pass"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="pass" required>
+                    <input type="password" id="login-pass" placeholder="Enter your password" name="pass" required>
+                    <p></p>
+                </div>
 
                     <button class="loginbtn login-btn" type="submit">Login</button>
                     <label>
