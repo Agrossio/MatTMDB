@@ -3,6 +3,7 @@
 :root {
     --colorPrimario: whitesmoke;
     --colorSecundario: #707070;
+    --colorTerciario: rgb(3, 37, 65);
 }
 
 * {
@@ -27,16 +28,6 @@ header {
     width: 100%;
     position: fixed;
     z-index: 1;
-}
-
-main {
-    position: relative;
-    top: 80px;
-    width: 80%;
-    /* border: 1px solid; */
-    margin: 0 auto;
-    background-color: whitesmoke;
-    border-radius: 5px;
 }
 
 nav {
@@ -153,6 +144,16 @@ h3{
 
 
 /* ------------------------------- MAIN ----------------------------------- */
+
+main {
+    position: relative;
+    top: 80px;
+    width: 80%;
+    /* border: 1px solid; */
+    margin: 0 auto;
+    background-color: var(--colorPrimario);
+    border-radius: 20px;
+}
 
 section {
     display: flex;

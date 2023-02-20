@@ -16,7 +16,6 @@ function validateInputs(userInput, pass1Input, pass2Input = null, emailInput = n
     if (!emailValue) {
         validatefailure("Please enter a valid email", emailInput);
     } else if (!validEmail(emailValue)) {
-        console.log("HOLA");
         validatefailure("Please enter a valid email", emailInput);
     } else if (emailValue) {
         validationOk(emailInput);

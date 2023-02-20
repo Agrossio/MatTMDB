@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         });
 
-        generateSection(trendingArray, trendingSection) // esto seria para usar si puedo lograr hacer andar los modulos: meter el for dentro del generateSection pasando mediaArray y una section
+        generateSection(trendingArray, trendingSection)
         generateSection(topRatedArray, topRatedSection)
         
         let registerForm = document.querySelector('.register-form-modal-content');
