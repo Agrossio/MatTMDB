@@ -1,15 +1,16 @@
 async function fetchJson(url, method = 'GET', body) {
 
     try {
-        
+
         let response;
 
-        if(method === 'GET'){
+        if (method === 'GET' || method === 'DELETE') {
 
-            response = await fetch(url);
+            response = await fetch(url, { method: method });
+
         } else {
 
-           response = await fetch(url, {
+            response = await fetch(url, {
                 method: method,
                 headers: {
                     'Content-Type': 'application/json'
@@ -18,17 +19,17 @@ async function fetchJson(url, method = 'GET', body) {
             })
 
         }
-        
+
         let jsonData = await response.json()
         // console.log("JSON DATA", jsonData)
 
-        if (Array.isArray(jsonData.results)){
+        if (Array.isArray(jsonData.results)) {
 
             let fetchResult = await jsonData.results
             // console.log("FETCH RESULT", fetchResult)
-            
+
             return fetchResult;
-        
+
         } else {
             console.log(jsonData);
             return jsonData;

@@ -1,10 +1,32 @@
 import { generateSection } from "./commons/articles.js";
-import { gridModal} from "./commons/modals.js";
+import { gridModal } from "./commons/modals.js";
 import { fetchJson } from "./utils/fetch.js";
 import { userFormListener } from "./utils/forms.js";
+import { logout, viewProfile } from "./utils/menu.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
 
+    /*---------------------------------- REGISTER FORM ------------------------------------*/
+    let registerForm = document.querySelector('.register-form-modal-content');
+    let userInput = document.querySelector('#register-user');
+    let emailInput = document.querySelector('#register-email');
+    let pass1Input = document.querySelector('#register-pass1');
+    let pass2Input = document.querySelector('#register-pass2');
+
+    // agrego listener al register form:
+    userFormListener(registerForm, userInput, emailInput, pass1Input, pass2Input);
+
+
+    /*------------------------------------ LOGIN FORM ------------------------------------*/
+    let loginForm = document.querySelector('.login-form-modal-content');
+    let emailLoginInput = document.querySelector('#login-email');
+    let passLoginInput = document.querySelector('#login-pass');
+
+    // agrego listener al login form:
+    userFormListener(loginForm, null, emailLoginInput, passLoginInput, null);
+
+
+    /*---------------------------------- SESSION INFO ------------------------------------*/
     let userSession = {
         userId: localStorage.getItem('userid'),
         username: localStorage.getItem('username'),
@@ -14,37 +36,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     let registerBtn = document.querySelector("#register-btn");
     let loginBtn = document.querySelector("#login-btn");
     let profileDropdown = document.querySelector("#profile-dropdown");
+    let profileBtn = document.querySelector("#profile-btn");
     let logoutBtn = document.querySelector("#logout-btn");
 
-    logoutBtn.addEventListener('click', e => {
-        localStorage.clear();
-
-        // armar un endpoint a /me mandando un body con la info de la session para que me cargue la info de la session
-        document.location.reload();
-    })
+    viewProfile(profileBtn, userSession, registerForm, userInput, emailInput, pass1Input, pass2Input);
+    logout(logoutBtn);
 
     console.log("USER SESSION", userSession);
 
-    if(userSession.userId){
+    if (userSession.userId) {
         registerBtn.classList.add('hidden');
         loginBtn.classList.add('hidden');
         profileDropdown.classList.remove('hidden')
         logoutBtn.classList.remove('hidden')
 
         let username = profileDropdown.children[0];
-       // username.innerText = `${userSession.username}`;
+        // username.innerText = `${userSession.username}`;
 
-        let icon = document.createElement('i');
+        let icon = document.createElement('img');
         icon.classList.add('fa');
         icon.classList.add('fa-caret-down');
-        icon.innerHTML = "&#709";
+        icon.setAttribute('src', './assets/drop-down-arrow-16px.png')
 
-        username.innerText= `${userSession.username}`;
+        username.innerText = `${userSession.username} `;
         username.appendChild(icon);
-
 
         console.dir(username);
     }
+
+    /*---------------------------- GENERATE SECTIONS INFO --------------------------------*/
 
     try {
 
@@ -85,22 +105,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         generateSection(trendingArray, trendingSection)
         generateSection(topRatedArray, topRatedSection)
-        
-        let registerForm = document.querySelector('.register-form-modal-content');
-        let userInput = document.querySelector('#register-user');
-        let emailInput = document.querySelector('#register-email');
-        let pass1Input = document.querySelector('#register-pass1');
-        let pass2Input = document.querySelector('#register-pass2');
-
-        // agrego listener al register form:
-        userFormListener(registerForm, userInput, emailInput, pass1Input, pass2Input);
-
-        let loginForm = document.querySelector('.login-form-modal-content');
-        let emailLoginInput = document.querySelector('#login-email');
-        let passLoginInput = document.querySelector('#login-pass');
-
-        // agrego listener al login form:
-        userFormListener(loginForm, null, emailLoginInput, passLoginInput, null);
 
     } catch (error) {
         alert(error)

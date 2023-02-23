@@ -193,6 +193,10 @@ h3{
     text-align: left;
   }
 
+  .fa-caret-down{
+    width: 16px;
+  }
+
   /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
     background-color: #ddd;

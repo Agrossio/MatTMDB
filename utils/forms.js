@@ -44,14 +44,14 @@ function userFormListener(registerForm, userInput, emailInput, pass1Input, pass2
                         alert(response.message)
                     } else {
                         
-                        // hide register form:
+                        // hide login form:
                         document.getElementById('login').style.display = 'none';
     
                         localStorage.setItem('userid', response.response.userId);
                         localStorage.setItem('username', response.response.username);
                         localStorage.setItem('email', response.response.email);
                         
-                        // armar un endpoing a /me mandando un body vacio para que me borre la session
+                        // armar un endpoint a "/me" mandando un body vacio para que me borre la session
                         document.location.reload();
 
                         // show profile form (me falta crear el perfil):
