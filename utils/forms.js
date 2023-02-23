@@ -51,6 +51,9 @@ function userFormListener(registerForm, userInput, emailInput, pass1Input, pass2
                         localStorage.setItem('username', response.response.username);
                         localStorage.setItem('email', response.response.email);
                         
+                        // armar un endpoing a /me mandando un body vacio para que me borre la session
+                        document.location.reload();
+
                         // show profile form (me falta crear el perfil):
                         //document.getElementById('profile').style.display = 'block';
                     }

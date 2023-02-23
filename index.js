@@ -13,21 +13,37 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let registerBtn = document.querySelector("#register-btn");
     let loginBtn = document.querySelector("#login-btn");
-    let profileBtn = document.querySelector("#profile-btn");
+    let profileDropdown = document.querySelector("#profile-dropdown");
     let logoutBtn = document.querySelector("#logout-btn");
+
+    logoutBtn.addEventListener('click', e => {
+        localStorage.clear();
+
+        // armar un endpoint a /me mandando un body con la info de la session para que me cargue la info de la session
+        document.location.reload();
+    })
 
     console.log("USER SESSION", userSession);
 
     if(userSession.userId){
         registerBtn.classList.add('hidden');
         loginBtn.classList.add('hidden');
-        profileBtn.classList.remove('hidden')
+        profileDropdown.classList.remove('hidden')
         logoutBtn.classList.remove('hidden')
 
-        let link = profileBtn.children[0];
-        link.innerText = `Hola ${userSession.username}!!`;
+        let username = profileDropdown.children[0];
+       // username.innerText = `${userSession.username}`;
 
-        console.dir(link);
+        let icon = document.createElement('i');
+        icon.classList.add('fa');
+        icon.classList.add('fa-caret-down');
+        icon.innerHTML = "&#709";
+
+        username.innerText= `${userSession.username}`;
+        username.appendChild(icon);
+
+
+        console.dir(username);
     }
 
     try {
