@@ -31,12 +31,12 @@ async function fetchJson(url, method = 'GET', body) {
             return fetchResult;
 
         } else {
-            console.log(jsonData);
+            //console.log(jsonData);
             return jsonData;
         }
 
     } catch (error) {
-        //console.error(error)
+        console.error(error)
     }
 
 }

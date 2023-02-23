@@ -40,7 +40,7 @@ function viewProfile(profileBtn, userSession, registerForm, userInput, emailInpu
             document.location.reload();
         })
 
-        userFormListener(registerForm, userInput, emailInput, pass1Input, pass2Input);
+        userFormListener(registerForm, userInput, emailInput, pass1Input, null, userSession);
     })
 
 }

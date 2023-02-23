@@ -7,7 +7,7 @@ function generateSection (mediaArray, section){
 
     for (let i = 0; i < 5; i++) {
 
-        console.log(mediaArray);
+        // console.log(mediaArray);
 
         let title = mediaArray[i].media_type == "movie" ? "title" : "name";
         let releaseDate = mediaArray[i].media_type == "movie" ? "release_date" : "first_air_date";
