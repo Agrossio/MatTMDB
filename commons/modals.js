@@ -32,7 +32,7 @@ function modalArticle(article, mediaElement) {
 
     // busco el detalle de la pelicula que recibo por props:
 
-    let mediaData = await fetchJson(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=e65c4db5bae2b9b0565c97b1e317145e`, null)
+    let mediaData = await fetchJson(`https://api.themoviedb.org/3/${media_type}/${id}?api_key=e65c4db5bae2b9b0565c97b1e317145e`)
 
     console.log("media data", mediaData);
 
