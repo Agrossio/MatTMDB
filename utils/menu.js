@@ -31,15 +31,17 @@ function viewProfile(profileBtn, userSession, registerForm, userInput, emailInpu
 
         cancelBtn.addEventListener('click', async e => {
 
+            // Falta obligar a ingresar la contraseña y confirmar que se desea borrar la cuenta
            let response = await fetchJson(`http://localhost:8080/mattmdb-1.0-SNAPSHOT/api/v1/users/${userSession.userId}`, 'DELETE');
            console.log(response); 
            
             alert(response.message);
             localStorage.clear();
-            // armar un endpoint a /me mandando un body con la info de la session para que me cargue la info de la session
+            // armar un endpoint a "/me" mandando un body con la info de la session para que me cargue la info de la session
             document.location.reload();
         })
 
+        // uso el formulario register pero con la funcionalidad de profile:
         userFormListener(registerForm, userInput, emailInput, pass1Input, null, userSession);
     })
 

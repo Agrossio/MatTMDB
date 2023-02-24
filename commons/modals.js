@@ -155,7 +155,7 @@ async function gridModal(mediaArray) {
 
   let { id, media_type } = mediaArray;
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < mediaArray.length; i++) {
 
     let title = mediaArray[i].media_type == "movie" ? "title" : "name";
     let releaseDate = mediaArray[i].media_type == "movie" ? "release_date" : "first_air_date";
@@ -184,7 +184,7 @@ async function gridModal(mediaArray) {
     let pDate = document.createElement('p');
     pDate.classList.add("release-date");
     pDate.innerText = mediaArray[i][releaseDate];
-modalArticle
+
     let pType = document.createElement('p');
     pType.classList.add("media-type");
     pType.innerText = mediaType;

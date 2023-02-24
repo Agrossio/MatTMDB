@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         logoutBtn.classList.remove('hidden')
 
         let username = profileDropdown.children[0];
-        // username.innerText = `${userSession.username}`;
 
         let icon = document.createElement('img');
         icon.classList.add('fa');
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         username.innerText = `${userSession.username} `;
         username.appendChild(icon);
 
-        console.dir(username);
     }
 
     /*---------------------------- GENERATE SECTIONS INFO --------------------------------*/
@@ -71,20 +69,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         let trendingArray = await fetchJson('https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e')
         let topRatedArray = await fetchJson('https://api.themoviedb.org/3/discover/tv?api_key=e65c4db5bae2b9b0565c97b1e317145e&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=true&page=1')
 
-        // https://api.themoviedb.org/3/trending/all/day?api_key=e65c4db5bae2b9b0565c97b1e317145e
-        // https://api.themoviedb.org/3/movie/top_rated?api_key=e65c4db5bae2b9b0565c97b1e317145e&language=en-US&page=1
-
         // console.log(trendingArray)
 
         let trendingSection = document.querySelector("#trending")
         let topRatedSection = document.querySelector("#top-rated")
+
+        generateSection(trendingArray, trendingSection)
+        generateSection(topRatedArray, topRatedSection)
+
+
+    /*---------------------------- SEARCH INPUT --------------------------------*/
 
         let searchInput = document.querySelector("#search-input")
 
         searchInput.addEventListener('keypress', async e => {
 
             // e.preventDefault(); // como no uso el form, no hace falta
-            console.log(e);
+            // console.log(e);
 
             // Search and show info in the grid modal when "enter" is pressed:
 
@@ -103,8 +104,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         });
 
-        generateSection(trendingArray, trendingSection)
-        generateSection(topRatedArray, topRatedSection)
 
     } catch (error) {
         alert(error)

@@ -33,7 +33,7 @@ function userFormListener(registerForm, userInput, emailInput, pass1Input, pass2
                     password: passValue,
                 })
 
-                console.log(body);
+               // console.log(body);
 
                 try {
 
@@ -75,7 +75,7 @@ function userFormListener(registerForm, userInput, emailInput, pass1Input, pass2
             const pass1Value = pass1Input.value;
 
             const validatedForm = validateInputs(userInput, pass1Input, pass1Input, emailInput);
-            console.log("VALIDATED", validatedForm)
+            // console.log("VALIDATED", validatedForm)
 
             if (validatedForm) {
 
@@ -100,7 +100,7 @@ function userFormListener(registerForm, userInput, emailInput, pass1Input, pass2
 
 
                     // armar un endpoint a "/me" mandando un body vacio para que me borre la session
-                    // document.location.reload();
+                    document.location.reload();
 
 
                 } catch (error) {
@@ -134,6 +134,7 @@ function userFormListener(registerForm, userInput, emailInput, pass1Input, pass2
 
                     let response = await fetchJson("http://localhost:8080/mattmdb-1.0-SNAPSHOT/api/v1/users", 'POST', body)
                     console.log(response);
+                    alert(response.message);
 
                     // hide register form:
                     document.getElementById('register').style.display = 'none';
